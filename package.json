@@ -4,7 +4,11 @@
   "description": "web development tools by Terry Morse",
   "main": "src/index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "lite-server",
+    "build": "scripts/src-build.sh",
+    "deploy": "scripts/dist-deploy.sh",
+    "rlogin": "ssh terrymorse@terrymorse.com"
   },
   "repository": {
     "type": "git",
