@@ -1,0 +1,16 @@
+{
+  "name": "browserinfo",
+  "version": "1.0.0",
+  "description": "report information about the current browser",
+  "main": "index.html",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/terrymorse58/bootsdark.git"
+  },
+  "author": "Terry Morse",
+  "license": "MIT",
+  "dependencies": {
+    "detect.js": "^2.2.3"
+  }
+}

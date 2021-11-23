@@ -1,0 +1,12 @@
+{
+  "name": "sticky-hover",
+  "version": "1.0.0",
+  "description": "sticky hover button fix demo",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Terry Morse",
+  "license": "UNLICENSED",
+  "dependencies": {}
+}

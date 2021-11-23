@@ -1,0 +1,132 @@
+<html>
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport"
+        content="width=device-width, maximum-scale=1, minimum-scale=1, shrink-to-fit=no, user-scalable=no">
+
+  <!-- apple web app meta tags -->
+  <meta name="apple-mobile-web-app-title" content="WinEvents">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <title>JavaScript Summation Errors</title>
+
+  <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+        crossorigin="anonymous">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootsdark@latest/dist/bootsdark.min.css">
+
+  <style>
+    div.calc {
+      max-width: 40rem;
+      padding: 2rem;
+      margin-top: 1rem;
+      border: 1px solid rgba(0,0,0,0.5);
+    }
+
+    pre {
+      max-width: 20rem;
+      margin: 1rem 0;
+      padding: 0.5rem;
+      border: 1px solid rgba(0,0,0,0.5);
+    }
+
+    input {
+      max-width: 20rem;
+    }
+
+    i {
+      color: #007bff;
+    }
+  </style>
+</head>
+<body class="d-flex flex-column h-100">
+<header>
+  <!-- Fixed navbar -->
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand" href="https://terrymorse.com">Terry Morse
+      Software</a>
+  </nav>
+</header>
+
+<main role="main" class="flex-shrink-0 m-4">
+
+
+  <div class="calc">
+    <h1>
+      JavaScript Summation Errors
+    </h1>
+    <p>
+      JavaScript uses stores all number values in double precision
+      floating-point
+      format. Since double precision representations have finite precision, a
+      small error may be introduced with every addition. These errors accumulate
+      when summing long lists of values.</p>
+    <p>
+      Calculate the maximum possible error when computing the sum of <b>N</b>
+      values in JavaScript:
+    </p>
+    <div class="form-group">
+      <label for="count">Enter number of values (N)</label>
+      <input id="count" class="form-control" type="number" value="1000"/><br/>
+      <label for="sum">Enter the exact sum total</label>
+      <input id="sum" class="form-control" type="number" value="1000000"/><br/>
+      <button id="calculate" class="btn btn-primary btn-large">
+        Calculate
+      </button>
+    </div>
+
+
+    <p>
+      <b>Result:</b>
+    </p>
+
+    <pre id="result">(click a button above)</pre>
+    <h4>Reference</h4>
+    <p>Goldberg, D.;
+      <a
+        href="https://archive.org/details/IEEE754Article/page/n37"
+        target="_blank">What Every Computer Scientist Should Know About
+        Floating-Point Aritmetic</a>; ACM Computing Surveys, Vol 23, No 1, March
+      1991; Section 4.3 Errors in Summation
+    </p>
+  </div>
+</main>
+</body>
+<script>
+  function errorCalc () {
+    let count = Number(document.getElementById('count').value);
+    let sum = Number(document.getElementById('sum').value);
+    let result = document.getElementById('result');
+
+    let errMax = count * Number.EPSILON * sum;
+
+    result.innerHTML =
+      `If the actual sum of <i>${Number(count).toLocaleString()}</i>\n` +
+      `values is <i>${Number(sum).toLocaleString()}</i>,\n` +
+      `the calculated sum has\n\n` +
+      `  a maximum error of:\n\n` +
+      `     <i>${Number(errMax).toPrecision(6)}</i>\n\n` +
+      `  and a value between:\n\n` +
+      `     <i>${sum - errMax}</i>\n` +
+      `            and\n` +
+      `     <i>${sum + errMax}</i>`;
+  }
+
+  const button = document.getElementById('calculate');
+  button.addEventListener('click', errorCalc);
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async
+        src="https://www.googletagmanager.com/gtag/js?id=UA-3065155-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag () {dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-3065155-2');
+</script>
+
+</html>

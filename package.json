@@ -1,0 +1,23 @@
+{
+  "name": "devtools-terrymorse-com",
+  "version": "1.2.1",
+  "description": "web development tools by Terry Morse",
+  "main": "src/index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/terrymorse58/devtools-terrymorse-com.git"
+  },
+  "author": "Terry Morse",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/terrymorse58/devtools-terrymorse-com/issues"
+  },
+  "homepage": "https://github.com/terrymorse58/devtools-terrymorse-com#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "lite-server": "^2.6.1"
+  }
+}

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- some developer tools -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootsdark@latest/dist/bootsdark.min.css">
+  <title>Developer Tools</title>
+
+  <!-- override the default cards styling -->
+  <style id="tms-card-styles">
+    .tms-card {
+      height: calc(100% - 30px);
+    }
+    .tms-card img {
+      box-sizing: border-box;
+      border: 1px solid #909090;
+    }
+  </style>
+</head>
+<body class="h-100">
+<header>
+  <!-- Fixed navbar -->
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand" href="https://terrymorse.com">Terry Morse
+      Software</a>
+  </nav>
+</header>
+<main role="main" class="p-5">
+  <h1>Web Development Tools</h1>
+  <h4>A collection of useful tools for the web app developer.</h4>
+  <hr>
+  <div id="toolsWrapper" class="row tms-cards">
+    <!-- cards go here -->
+  </div> <!-- /.row -->
+</main>
+
+<script type="module">
+  import {addCard} from
+      "https://cdn.jsdelivr.net/npm/custom-bootstrap-card@1.3.0/src/bootstrap-card.js";
+
+  addCard({
+    containerId: "toolsWrapper",
+    imageUrl: "imgs/browserinfo.png",
+    imageAlt: "placeholder image",
+    title: "browserinfo",
+    text: "Detect a few useful browser features",
+    href: "browserinfo/index.html"
+  });
+  addCard({
+    containerId: "toolsWrapper",
+    imageUrl: "imgs/windowevents-static-600x450.gif",
+    imageAlt: "window-event-display",
+    title: "window-event-display",
+    text: "capture all the events going to document.window",
+    href: "window-event-display/index.html",
+    imgHoverURL: "imgs/windowevents-dynamic-400x300.gif"
+  });
+  addCard({
+    containerId: "toolsWrapper",
+    imageUrl: "imgs/summation-errors.png",
+    imageAlt: "placeholder image",
+    title: "summation errors",
+    text: "estimate numerical errors when summing numbers in JavaScript",
+    href: "summation-errors/index.html"
+  });
+  addCard({
+    containerId: "toolsWrapper",
+    imageUrl: "imgs/bootsdark-buttons-400x300.gif",
+    imageAlt: "placeholder image",
+    title: "bootsdark",
+    text: "Bootstrap CSS theme that responds to a computer's dark/light" +
+      " mode setting",
+    href: "bootsdark-demo/index.html",
+    imgHoverURL: "imgs/bootsdark-animated-400x300.gif"
+  });
+  addCard({
+    containerId: "toolsWrapper",
+    imageUrl: "imgs/browser-device.png",
+    imageAlt: "placeholder image",
+    title: "browser-device-features",
+    text: "client-side JavaScript package that detects several browser " +
+      "device features",
+    href: "browser-device-features/index.html"
+  });
+  addCard({
+    containerId: "toolsWrapper",
+    imageUrl: "imgs/iosmodal-detail-static-400x300.gif",
+    imageAlt: "placeholder image",
+    title: "bootstrap-ios-modal",
+    text: "Bootstrap modal dialog with the look and feel of an iOS modal",
+    href: "ios-modal/index.html",
+    imgHoverURL: "imgs/iosmodal-detail-animated-400x300.gif"
+  });
+  addCard({
+    containerId: "toolsWrapper",
+    imageUrl: "imgs/pointerevents.png",
+    imageAlt: "placeholder image",
+    title: "pointerevents",
+    text: "detect pointer and click events sent to a document",
+    href: "pointerevents/index.html"
+  });
+  addCard({
+    containerId: "toolsWrapper",
+    imageUrl: "imgs/console-error-button-static.gif",
+    imageAlt: "placeholder image",
+    title: "console-error-button",
+    text: "display a button when a console error occurs",
+    href: "console-error-button/index.html",
+    imgHoverURL: "imgs/console-error-button-animated.gif"
+  });
+  addCard({
+    containerId: "toolsWrapper",
+    imageUrl: "imgs/image-gallery-static-600x450.gif",
+    imageAlt: "image gallery overlay sample",
+    title: "image-gallery-overlay",
+    text: "responsive image gallery web component",
+    href: "image-gallery-overlay/index.html",
+    imgHoverURL: "imgs/image-gallery-animated-400x300.gif"
+  });
+  addCard({
+    containerId: "toolsWrapper",
+    imageUrl: "imgs/custom-bootstrap-card-static-800x600.gif",
+    imageAlt: "custom bootstrap card with hover animation",
+    title: "custom-bootstrap-card",
+    text: "A responsive custom card with hover animation effects",
+    href: "custom-bootstrap-card/index.html",
+    imgHoverURL: "imgs/custom-bootstrap-card-animated-400x300.gif"
+  });
+  addCard({
+    containerId: "toolsWrapper",
+    imageUrl: "imgs/cross-fade-effect-400x300.gif",
+    imageAlt: "cross fade effect with CSS transitions",
+    title: "cross-fade-css-transition",
+    text: "Deminstrating how to perform a cross-fade effect",
+    href: "cross-fade-css-transition/index.html",
+    imgHoverURL: "imgs/cross-fade-effect-400x300.gif"
+  });
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-3065155-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-3065155-2');
+</script>
+
+</body>
+</html>

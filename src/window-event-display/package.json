@@ -1,0 +1,9 @@
+{
+  "name": "windowevents",
+  "version": "1.0.0",
+  "description": "displays events sent to document.window",
+  "main": "index.html",
+  "scripts": {},
+  "author": "Terry Morse",
+  "license": "MIT"
+}

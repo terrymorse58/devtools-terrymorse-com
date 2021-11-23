@@ -1,0 +1,14 @@
+{
+  "name": "darkmode-demo",
+  "version": "1.0.0",
+  "description": "responsive Bootstrap dark mode demo",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Terry Morse",
+  "license": "MIT",
+  "dependencies": {
+    "bootsdark": "^1.0.3"
+  }
+}

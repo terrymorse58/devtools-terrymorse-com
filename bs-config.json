@@ -1,0 +1,14 @@
+{
+  "port": 3443,
+  "files": [
+    "./src/*",
+    "./src/**/*"
+  ],
+  "watch": true,
+  "server": {
+    "baseDir": "./src",
+    "index": "index.html"
+  },
+  "https": true,
+  "logLevel": "info"
+}
