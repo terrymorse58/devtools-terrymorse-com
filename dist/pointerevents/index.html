@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<!--
+  Test of Pointer Events
+-->
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport"
+    content="width=device-width, maximum-scale=1, minimum-scale=1, shrink-to-fit=no, user-scalable=no">
+
+  <!-- apple web app meta tags -->
+  <meta name="apple-mobile-web-app-title" content="WinEvents">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="testing-180x180.png">
+
+  <title>Test of Pointer Events</title>
+
+  <link rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+    crossorigin="anonymous">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootsdark@latest/dist/bootsdark.min.css">
+  <style>
+    #target-div {
+      height: 40px;
+      width: 20rem;
+      padding: 0.4rem;
+      border: 1px solid dodgerblue;
+    }
+    #divEvents {
+      border: 1px solid rgba(0,0,0,0.5);
+      height: 10rem;
+      max-width: 40rem;
+      padding: 0 0.6rem;
+      overflow: auto;
+    }
+    #olEvents {
+      font-size: 87.5%;
+      margin: 0;
+    }
+    #divBottom {
+      margin: 0;
+      height: 0;
+    }
+    code {
+      font-size: 100%;
+    }
+    /* handle the sticky hover problem on touch devices */
+    @media (hover:none) {
+      /* set button hover style to match non-hover */
+      .btn-outline-primary:hover {
+        color: #007bff;
+        background-color: transparent;
+        background-image: none;
+        border-color: #007bff;
+      }
+      /* set button focus style to match hover */
+      .btn-outline-primary:focus {
+        color: #fff;
+        background-color: #007bff;
+        border-color: #007bff;
+      }
+
+    }
+  </style>
+</head>
+
+<body class="d-flex flex-column h-100">
+<header>
+  <!-- Fixed navbar -->
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand" href="https://terrymorse.com">Terry Morse
+      Software</a>
+  </nav>
+</header>
+
+<main role="main" class="flex-shrink-0 m-4">
+
+  <h1>Test of Pointer Events</h1>
+
+  <p>Display all caught pointer events.
+  </p>
+
+  <p>
+    <button id="btnClear" class="btn btn-sm btn-outline-primary">Clear History
+    </button>
+  </p>
+
+  <div id="target-div">Point at me</div>
+
+  <h4>Events Caught:</h4>
+  <div id="divEvents">
+    <ol id="olEvents" class="text-monospace"></ol>
+    <div id="divBottom"></div>
+  </div>
+
+
+</main>
+
+<script>
+  // determine if this is a touch-capable device
+  const isTouchDevice = ('ontouchstart' in window) ||
+    (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0);
+  console.log(`isTouchDevice: ${isTouchDevice ? 'TRUE' : 'FALSE'} `);
+
+  const button = document.getElementById('btnClear');
+  const divEvents = document.getElementById('divEvents');
+  const olEvents = document.getElementById('olEvents');
+  const divBottom = document.getElementById('divBottom');
+
+  // handle "clear history" button click
+  button.addEventListener('click', function () {
+    if (isTouchDevice) {
+      // simulate click on button using `focus` and `blur`
+      button.focus();
+      setTimeout(() => button.blur(), 500);
+    }
+    olEvents.innerHTML = '';
+  });
+  button.addEventListener('pointerdown', (evt) => {
+    evt.stopPropagation();
+  });
+
+  const eventNames = [
+    'pointerover',
+    'pointerenter',
+    'pointerdown',
+    'pointermove',
+    'pointerup',
+    'pointercancel',
+    'pointerout',
+    'pointerleave',
+    'click'
+  ];
+  const targetDiv = document.getElementById('target-div');
+  eventNames.forEach(function (eventName) {
+    targetDiv.addEventListener(eventName, function (evt) {
+      const now = new Date();
+      const timeStr = now.getHours().toString().padStart(2,'0') + ':' +
+        now.getMinutes().toString().padStart(2,'0') + ':' +
+        now.getSeconds().toString().padStart(2,'0') + '.' +
+        now.getMilliseconds();
+      const width = Number(evt.width).toFixed(1);
+      const height = Number(evt.height).toFixed(1);
+      const x = Number(evt.clientX);
+      const y = Number(evt.clientY);
+      let li = document.createElement('li');
+      li.innerHTML = `${timeStr} - <code>${evt.type}</code> - ` +
+        `x,y: ${x},${y} - w: ${width}, h: ${height}`;
+      olEvents.appendChild(li);
+
+      // scroll to bottom
+      divEvents.scrollTo(0, divBottom.offsetTop);
+    });
+  });
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-3065155-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-3065155-2');
+</script>
+
+</body>
+</html>

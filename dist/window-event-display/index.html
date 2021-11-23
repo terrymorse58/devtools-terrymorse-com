@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<!--
+  Test of Window Events - displays all the events sent to document.window, except for 'scroll'
+-->
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport"
+    content="width=device-width, maximum-scale=1, minimum-scale=1, shrink-to-fit=no, user-scalable=no">
+
+  <!-- apple web app meta tags -->
+  <meta name="apple-mobile-web-app-title" content="WinEvents">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="testing-180x180.png">
+
+  <title>Test of Window Events</title>
+
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootsdark@latest/dist/bootsdark.min.css">
+  <style>
+    #divEvents {
+      border: 1px solid rgba(0,0,0,0.5);
+      height: 400px;
+      max-width: 60rem;
+      padding: 1rem 0;
+      overflow-y: auto;
+    }
+    #olEvents {
+      font-size: 87.5%;
+    }
+    #divBottom {
+      height: 0px;
+    }
+    code {
+      font-size: 100%;
+    }
+    /* handle the sticky hover problem on touch devices */
+    @media (hover:none) {
+      /* set button hover style to match non-hover */
+      .btn-outline-primary:hover {
+        color: #007bff;
+        background-color: transparent;
+        background-image: none;
+        border-color: #007bff;
+      }
+      /* set button focus style to match hover */
+      .btn-outline-primary:focus {
+        color: #fff;
+        background-color: #007bff;
+        border-color: #007bff;
+      }
+
+    }
+  </style>
+</head>
+
+<body class="d-flex flex-column h-100">
+<header>
+  <!-- Fixed navbar -->
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand" href="https://terrymorse.com">Terry Morse
+      Software</a>
+  </nav>
+</header>
+
+<main role="main" class="flex-shrink-0 m-4">
+
+  <h1>Test of Window Events</h1>
+
+  <p>Displays all of the events (except for
+    <code>scroll</code>) sent to <code>document.window</code>.</p>
+
+  <p>
+    <button id="btnClear" class="btn btn-sm btn-outline-primary">Clear History
+    </button>
+  </p>
+
+  <h4>Events Caught:</h4>
+  <div id="divEvents">
+    <ol id="olEvents" class="text-monospace"></ol>
+    <div id="divBottom"></div>
+  </div>
+
+
+</main>
+
+<script
+  src="https://cdn.jsdelivr.net/npm/window-event-display@1.0.0/src/windowevents.js"></script>
+<script>
+  // determine if this is a touch-capable device
+  const isTouchDevice = ('ontouchstart' in window) ||
+    (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0);
+  console.log(`isTouchDevice: ${isTouchDevice ? 'TRUE' : 'FALSE'} `);
+
+  const button = document.getElementById('btnClear');
+  const divEvents = document.getElementById('divEvents');
+  const olEvents = document.getElementById('olEvents');
+
+  // handle "clear history" button click
+  button.addEventListener('click', function () {
+    if (isTouchDevice) {
+      // simulate click on button using `focus` and `blur`
+      button.focus();
+      setTimeout(() => button.blur(), 500);
+    }
+    olEvents.innerHTML = '';
+  });
+
+  WindowEvents(olEvents, divEvents);
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-3065155-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-3065155-2');
+</script>
+
+</body>
+</html>
