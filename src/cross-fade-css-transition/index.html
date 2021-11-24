@@ -26,40 +26,54 @@
 
   <style>
     .wrapper {
-      border: 1px solid red;
       width: 90vw;
-      height: 55vw;
+      height: 50vw;
       margin: 1rem 0 4rem 0;
       position: relative;
+      background: #606060;
     }
-    .img-background, .img-fade {
-      width: calc(90vw - 2px);
-      height: calc(55vw - 4px);
-    }
-    .img-background {
-      z-index: 0;
-    }
-    .img-fade {
+
+    .wrapper.wrapper-fade {
       position: absolute;
       top: 0;
       left: 0;
+      margin: 0;
+      clip-path: inset(15vw 20vw 15vw 20vw);
+      z-index: 2;
+      opacity: 0;
+      background: #606060;
+    }
+
+    .div-fade {
+      width: calc(50vw);
+      height: calc(20vw);
+      position: absolute;
+      top: 15vw;
+      left: 20vw;
+      font-family: "Courier New", monospace;
+      font-weight: 700;
+      color: green;
+      font-size: 20vw;
+      text-align: center;
+      line-height: 100%;
       z-index: 1;
-      transition: opacity 2s linear;
-    }
-    .fade-in {
       opacity: 0;
     }
-    .fade-in.fade {
+
+    .show {
+      opacity: 1;
+    }
+
+    .div-fade.fade {
+      z-index: 3;
       opacity: 1;
       transition: opacity 2s linear;
     }
-    .fade-out {
+    .wrapper-fade.fade {
       opacity: 1;
-    }
-    .fade-out.fade {
-      opacity: 0;
       transition: opacity 2s linear;
     }
+
     .btn-fade {
       position: absolute;
       top: 1rem;
@@ -73,17 +87,9 @@
 <h1>Cross Fade Effect with CSS Transitions</h1>
 
 <div class="wrapper">
-  <img class="img-background img-fluid"
-       src="imgs/cross-fade-background-1024x768.jpg"
-       alt="background image">
-  <img id="img-a"
-       class="img-fade fade-in"
-       src="imgs/cross-fade-img-a.png"
-       alt="image a">
-  <img id="img-b"
-       class="img-fade fade-out"
-       src="imgs/cross-fade-img-b.png"
-       alt="image b">
+  <div id="div-clipped" class="wrapper wrapper-fade"></div>
+  <div id="div-a" class="div-fade show">good</div>
+  <div id="div-b" class="div-fade hide">goat</div>
   <button id="btn-fade" class="btn btn-primary btn-fade">Cross Fade</button>
 </div>
 
@@ -92,13 +98,26 @@
 </footer>
 
 <script>
-  const btnFade = document.getElementById('btn-fade');
-  const imgA = document.getElementById('img-a');
-  const imgB = document.getElementById('img-b');
+  const btnFade = document.querySelector('#btn-fade');
+  const divClipped = document.querySelector('#div-clipped');
+
   btnFade.addEventListener('click', () => {
-    imgA.classList.toggle('fade');
-    imgB.classList.toggle('fade');
+    const elToFade = document.querySelector('.div-fade.hide');
+    console.log('elToFade:', elToFade);
+    elToFade.classList.remove('hide');
+    elToFade.classList.add('fade');
+    divClipped.classList.add('fade');
   });
+
+  divClipped.ontransitionend = () => {
+    const showing = document.querySelector('.div-fade.show');
+    const faded = document.querySelector('.div-fade.fade');
+    divClipped.classList.remove('fade');
+    showing.classList.remove('show');
+    showing.classList.add('hide');
+    faded.classList.add('show');
+    faded.classList.remove('fade');
+  }
 </script>
 
 </body>
